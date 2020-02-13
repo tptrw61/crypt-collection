@@ -1,4 +1,4 @@
-#include "shift.h"
+#include "../../inc/text/shift.h"
 
 #define CRYPT Crypt::Text
 #define SHIFT CRYPT::Shift

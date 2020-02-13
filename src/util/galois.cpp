@@ -1,4 +1,4 @@
-#include "galois.h"
+#include "../../inc/util/galois.h"
 
 static Galois galoisInvTable[256];
 static bool galoisInvTableGenerated = false;

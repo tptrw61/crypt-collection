@@ -38,7 +38,7 @@ int main(int argc, char **argv) {
 	} else {
 		std::string oper = "0", optoper = "-0";
 		char c, C;
-		for (c = 'a', C = 'A'; c <= 'z'; c++, c++) {
+		for (c = 'a', C = 'A'; c <= 'z'; c++, C++) {
 			oper[0] = c;
 			optoper[1] = c;
 			if (oper.compare(argv[2]) == 0 || optoper.compare(argv[2]) == 0)

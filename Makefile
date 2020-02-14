@@ -5,7 +5,7 @@ CXXFLAGS := -Wall
 #INC_DATA = -Iinc/data
 #INC_UTIL = -Iinc/util
 
-TEXT = bin/text_shift.o
+TEXT = bin/text_shift.o bin/text_shift_driver.o
 DATA = 
 UTIL = bin/util_galois.o
 

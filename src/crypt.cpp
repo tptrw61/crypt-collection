@@ -4,6 +4,9 @@
 #include "../inc/text_cipher.h"
 #include "../inc/data_cipher.h"
 
+//int driver(char op, int argc, char **argv);
+using DriverFunc = int (*)(char , int, char **);
+
 int main(int argc, char **argv) {
 	if (argc == 1) {
 		fprintf(stderr, "%s: missing type. See '%s -h' for details\n", argv[0], argv[0]);
@@ -11,7 +14,7 @@ int main(int argc, char **argv) {
 	}
 	std::string cryptType = argv[1];
 	if (cryptType.compare("-h") == 0 || cryptType.compare("--help") == 0) {
-		printf("usage: %s [-h|--help] <type> <e|d> <type-opts> [file]\n", argv[0]);
+		printf("usage: %s [-h|--help] <type> <operation> <type-opts> [file]\n", argv[0]);
 		printf("---TEXT TYPES---\n");
 		printf(TEXT_SHIFT" - Caeser Cipher\n");
 		printf("---DATA TYPES---\n");
@@ -20,14 +23,35 @@ int main(int argc, char **argv) {
 		return 0;
 	}
 	//
+	DriverFunc driver = nullptr;
 	if (cryptType.compare(TEXT_SHIFT) == 0) {
-		//
+		driver = Crypt::Text::Driver::shift;
 	} else {
 		fprintf(stderr, "%s: invalid type '%s'. See '%s -h' for details\n", argv[0], argv[1], argv[0]);
 		return 1;
 	}
-	//
-	std::string cryptDir = argv[2];
-	if (cryptDir.compare("e") == 0) {}
-	return 0;
+
+	//check that operation argument exists
+	char op = '?';
+	if (argc == 2) {
+		op = ' ';
+	} else {
+		std::string oper = "0", optoper = "-0";
+		char c, C;
+		for (c = 'a', C = 'A'; c <= 'z'; c++, c++) {
+			oper[0] = c;
+			optoper[1] = c;
+			if (oper.compare(argv[2]) == 0 || optoper.compare(argv[2]) == 0)
+				op = c;
+			oper[0] = C;
+			optoper[1] = C;
+			if (oper.compare(argv[2]) == 0 || optoper.compare(argv[2]) == 0)
+				op = C;
+		}
+		oper = "--help";
+		if (oper.compare(argv[2]) == 0)
+			op = 'h';
+	}
+
+	return driver(op, argc, argv);
 }

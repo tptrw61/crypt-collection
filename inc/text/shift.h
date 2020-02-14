@@ -22,6 +22,9 @@ namespace Crypt {
 			static std::string encrypt(const StrType& s, int shift);
 			static std::string decrypt(const StrType& s, int shift);
 		};
+		namespace Driver {
+			int shift(char operation, int argc, char **argv);
+		};
 	};
 };
 

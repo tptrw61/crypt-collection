@@ -37,12 +37,16 @@ int Crypt::Text::Driver::shift(char op, int argc, char **argv) {
 		case 'd':
 			break;
 		default:
-			fprintf(stderr, "%c\n", op);
 			fprintf(stderr, "%s: invalid operation '%s'\n", argv[0], argv[2]);
 			return 1;
 	}
 	if (op == 'h') {
 		// TODO print help message
+		printf("usage: %s shift <oper> <shiftn> [file...]\n", argv[0]);
+		printf("---OPERATIONS---\n");
+		printf(" e - encrypt\n");
+		printf(" d - decrypt\n");
+		printf(" h - help message\n");
 		return 0;
 	}
 	if (ac == 0) {

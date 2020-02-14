@@ -15,9 +15,9 @@ int main(int argc, char **argv) {
 	std::string cryptType = argv[1];
 	if (cryptType.compare("-h") == 0 || cryptType.compare("--help") == 0) {
 		printf("usage: %s [-h|--help] <type> <operation> <type-opts> [file]\n", argv[0]);
-		printf("---TEXT TYPES---\n");
-		printf(TEXT_SHIFT" - Caeser Cipher\n");
-		printf("---DATA TYPES---\n");
+		printf("\n---TEXT TYPES---\n");
+		printf(" %s - Caeser Cipher\n", TEXT_SHIFT);
+		printf("\n---DATA TYPES---\n");
 		printf("----------------\n");
 		printf("More to come...\n");
 		return 0;

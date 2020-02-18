@@ -42,7 +42,7 @@ int Crypt::Text::Driver::shift(char op, int argc, char **argv) {
 	}
 	if (op == 'h') {
 		// TODO print help message
-		printf("usage: %s shift <oper> <shiftn> [file...]\n", argv[0]);
+		printf("usage: %s %s <oper> <shiftn> [file...]\n", argv[0], argv[1]);
 		printf("---OPERATIONS---\n");
 		printf(" e - encrypt\n");
 		printf(" d - decrypt\n");
